@@ -140,7 +140,7 @@ public class LoanRepaymentWorkbookPopulator extends AbstractWorkbookPopulator {
     	try{
     		for(CompactLoan loan : loans) {
     			row = loanRepaymentSheet.createRow(rowIndex++);
-    			writeString(LOOKUP_CLIENT_NAME_COL, row, loan.getClientName());
+    			writeString(LOOKUP_CLIENT_NAME_COL, row, loan.getClientName()+"("+loan.getClientId()+")");
     			writeLong(LOOKUP_ACCOUNT_NO_COL, row, Long.parseLong(loan.getAccountNo()));
     			writeString(LOOKUP_PRODUCT_COL, row, loan.getLoanProductName());
     			writeDouble(LOOKUP_PRINCIPAL_COL, row, loan.getPrincipal());
@@ -271,11 +271,11 @@ public class LoanRepaymentWorkbookPopulator extends AbstractWorkbookPopulator {
     	String clientName = "";
     	
     	for(int i = 0; i < loans.size(); i++){
-    		if(!clientName.equals(loans.get(i).getClientName())) {
+    		if(!clientName.equalsIgnoreCase(loans.get(i).getClientName()+"("+loans.get(i).getClientId()+")")) {
     			endIndex = i + 1;
     			clientNameToBeginEndIndexes.put(clientName, new Integer[]{startIndex, endIndex});
     			startIndex = i + 2;
-    			clientName = loans.get(i).getClientName();
+    			clientName = loans.get(i).getClientName()+"("+loans.get(i).getClientId()+")";
     			clientsWithActiveLoans.add(clientName);
     		}
     		if(i == loans.size()-1) {

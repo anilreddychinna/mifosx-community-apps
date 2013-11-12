@@ -9,6 +9,8 @@ public class CompactLoan {
 
 	private final String accountNo;
 	
+	private final String clientId;
+	
 	private final String clientName;
 	
 	private final String loanProductName;
@@ -19,8 +21,9 @@ public class CompactLoan {
 	
 	private final Status status;
 	
-	public CompactLoan(String accountNo, String clientName, String loanProductName, Double principal, LoanTimeline timeline, Status status) {
+	public CompactLoan(String accountNo, final String clientId, String clientName, String loanProductName, Double principal, LoanTimeline timeline, Status status) {
 		this.accountNo = accountNo;
+		this.clientId = clientId;
 		this.clientName = clientName;
 		this.loanProductName = loanProductName;
 		this.principal = principal;
@@ -50,6 +53,10 @@ public class CompactLoan {
 	
 	public LoanTimeline getTimeline() {
 		return timeline;
+	}
+
+	public String getClientId() {
+		return clientId;
 	}
 
 	public static final Comparator<CompactLoan> ClientNameComparator = new Comparator<CompactLoan>() {
