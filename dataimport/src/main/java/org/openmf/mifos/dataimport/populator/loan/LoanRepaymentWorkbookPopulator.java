@@ -141,7 +141,7 @@ public class LoanRepaymentWorkbookPopulator extends AbstractWorkbookPopulator {
     		for(CompactLoan loan : loans) {
     			row = loanRepaymentSheet.createRow(rowIndex++);
     			writeString(LOOKUP_CLIENT_NAME_COL, row, loan.getClientName()+"("+loan.getClientId()+")");
-    			writeLong(LOOKUP_ACCOUNT_NO_COL, row, Long.parseLong(loan.getAccountNo()));
+    			writeLong(LOOKUP_ACCOUNT_NO_COL, row, Long.parseLong(loan.getId()));
     			writeString(LOOKUP_PRODUCT_COL, row, loan.getLoanProductName());
     			writeDouble(LOOKUP_PRINCIPAL_COL, row, loan.getPrincipal());
     			writeDate(LOOKUP_LOAN_DISBURSEMENT_DATE_COL, row, loan.getTimeline().getActualDisbursementDate().get(2) + "/" + loan.getTimeline().getActualDisbursementDate().get(1) + "/" + loan.getTimeline().getActualDisbursementDate().get(0), dateCellStyle);

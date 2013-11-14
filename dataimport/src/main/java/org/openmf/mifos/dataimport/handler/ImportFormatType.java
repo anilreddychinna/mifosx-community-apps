@@ -6,6 +6,7 @@ public enum ImportFormatType {
     
     XLSX_OPEN ("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"),
     XLS ("application/vnd.ms-excel"),
+    XLS1 ("application/ms-excel"),
     ODS ("application/vnd.oasis.opendocument.spreadsheet");
     
     
